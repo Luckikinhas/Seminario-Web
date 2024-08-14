@@ -1,0 +1,25 @@
+/*
+div_produto.className = 'div_produtos';
+img_produto.className = 'img_produtos';
+p_nome_produto.className = 'nome_produtos';
+p_preco_produto.className = 'preco_produtos';
+*/
+
+.div_produtos
+{
+    width: 700px;
+    height: 700px;
+}
+.img_produtos
+{
+    width: 400px;
+    height: 400px;
+}
+.nome_produtos
+{
+    font-size: 20px;
+}
+.preco_produtos
+{
+    font-size: 20px;
+}
