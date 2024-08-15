@@ -47,15 +47,46 @@ function add_prods ()
             produto_preco = document.createTextNode(produto_preco);
             div_filho.appendChild(produto_nome);
             div_filho.appendChild(produto_preco);
+            div_filho.id = produto.id_div;
             div_pai.appendChild(div_filho);
-
             preco_total+=produto.preco;
         }
     }
-    preco_total = `R$${preco_total.toFixed(2)}`;
-    preco_total = document.createTextNode(preco_total);
+    let preco_total_text = `R$${preco_total.toFixed(2)}`;
+    preco_total_text = document.createTextNode(preco_total_text);
     let preco_fixo = document.getElementById('preco_fixo');
-    preco_fixo.appendChild(preco_total);
+    preco_fixo.appendChild(preco_total_text);
+    forEach_apagar();
 }
 
 document.addEventListener('DOMContentLoaded', add_prods);
+
+function forEach_apagar()
+{
+    let divs_filho = document.querySelectorAll('.div_filho');
+    divs_filho.forEach(div_filho => {
+        div_filho.addEventListener('click', () => {
+            let id_div_atual = div_filho.id;
+            let aceitou = window.confirm('Tem certeza que deseja apagar?')
+            if (aceitou===true)
+            {
+                let div_apagar = document.getElementById(id_div_atual);
+                div_apagar.remove();
+                let produtos_apagados = get_cookie('comprar');
+                produtos_apagados = produtos_apagados.replace(`;${id_div_atual};`,';');
+                console.log(produtos_apagados);
+                set_cookie('comprar', produtos_apagados);
+                let produto = get_cookie(`prod_${id_div_atual}`);
+                produto = JSON.parse(produto);
+                let produto_preco = produto.preco;
+
+                preco_total-= produto_preco;
+                let preco_fixo = document.getElementById('preco_fixo');
+                let preco_total_text = `R$${preco_total.toFixed(2)}`;
+                preco_total_text = document.createTextNode(preco_total_text);
+                preco_fixo.textContent = '';
+                preco_fixo.appendChild(preco_total_text);
+            }   
+        })
+    });
+}
