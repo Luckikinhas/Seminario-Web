@@ -1,0 +1,81 @@
+/*
+div_produto.className = 'div_produtos';
+img_produto.className = 'img_produtos';
+p_nome_produto.className = 'nome_produtos';
+p_preco_produto.className = 'preco_produtos';
+*/
+
+#div_pai
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+.div_produtos
+{
+    width: 300px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+}
+.img_produtos
+{
+    width: 90%;
+    height: 70%;
+    border-radius: 10px;
+    pointer-events: none;
+}
+.preco_produtos
+{
+    font-size: 20px;
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0e5e5;
+}
+#div_pai {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.preco_produtos {
+    color: #555;
+}
+.div_produtos:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#botao_fixo
+{
+    position: fixed;
+    display: none;
+    z-index: 1000;
+    width: 170px;
+    height: 85px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(84, 83, 83);
+    border-radius: 10px;
+}
+
+p
+{
+    font-weight: bold;
+}
